@@ -6,7 +6,7 @@ export const federations = {
 } as const;
 
 export const productNames = {
-  sleeves: "sleves",
+  sleeves: "sleeves",
   stiffbar: "stiffbar",
   chalk: "chalk",
 } as const;

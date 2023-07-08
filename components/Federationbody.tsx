@@ -1,3 +1,4 @@
+"use client";
 import { FedType, Product, ProductNamesType, productNames } from "@/lib/types";
 import {
   Card,
@@ -8,10 +9,11 @@ import {
 } from "./ui/card";
 import { useFederationStore } from "@/lib/store";
 import { ScrollArea } from "./ui/scroll-area";
+import { useEffect } from "react";
 export function createFakeData(): Product[] {
   const productList: Product[] = [];
   const fedList: FedType[] = ["C", "A", "B"];
-  const productName: ProductNamesType[] = ["chalk", "sleeves", "stiffbar"];
+  const productName: ProductNamesType[] = ["sleeves", "stiffbar", "chalk"];
   const products = 8;
   for (let i = 0; i < products; i++) {
     const randomNum = Math.floor(Math.random() * 3);
@@ -34,18 +36,17 @@ type FedBodyProps = {
 
 export default function FederationBody({ fed }: FedBodyProps) {
   const data = createFakeData();
-  console.log(`current fed from body: ${fed}`);
   return (
     <div className="w-full mt-5">
       <ScrollArea className="h-[500px] rounded-md">
         {data
           .filter((item) => {
-            if (fed) {
+            if (fed !== "NONE") {
               if (item.federationSupport.includes(fed)) {
                 return item;
-              } else {
-                return item;
               }
+            } else {
+              return item;
             }
           })
           .map((item, idx) => (

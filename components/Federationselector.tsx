@@ -7,12 +7,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FedType } from "@/lib/types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FederationBody from "./Federationbody";
 
 export default function FederationSelect() {
   const [currFed, setCurrFed] = useState<FedType>("NONE");
-  console.log(`current fed from Select: ${currFed}`);
 
   return (
     <div>
