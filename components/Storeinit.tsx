@@ -1,7 +1,7 @@
 "use client";
 
 import { useFederationStore } from "@/lib/store";
-import { FedType, Product, ProductNamesType } from "@/lib/types";
+import { FedType } from "@/lib/types";
 import { useRef } from "react";
 
 type StoreProps = {

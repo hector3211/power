@@ -7,18 +7,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FedType } from "@/lib/types";
-import { useState } from "react";
 import FederationBody from "./Federationbody";
+import { useFederationStore } from "@/lib/store";
 
 export default function FederationSelect() {
-  const [currFed, setCurrFed] = useState<FedType>("NONE");
+  const { currentFederation, setFederation } = useFederationStore();
 
   return (
     <div>
-      <Select onValueChange={(e: FedType) => setCurrFed(e)}>
+      <Select onValueChange={(e: FedType) => setFederation(e)}>
         <SelectTrigger className="w-96 text-white text-lg">
           <SelectValue
-            placeholder={currFed === "NONE" ? "ALL" : `${currFed}`}
+            placeholder={
+              currentFederation === "NONE" ? "ALL" : `${currentFederation}`
+            }
           />
         </SelectTrigger>
         <SelectContent>
@@ -28,7 +30,7 @@ export default function FederationSelect() {
           <SelectItem value="NONE">ALL</SelectItem>
         </SelectContent>
       </Select>
-      <FederationBody fed={currFed} />
+      <FederationBody />
     </div>
   );
 }

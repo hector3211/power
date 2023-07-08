@@ -7,9 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { useFederationStore } from "@/lib/store";
 import { ScrollArea } from "./ui/scroll-area";
-import { useEffect } from "react";
+import { useFederationStore } from "@/lib/store";
 export function createFakeData(): Product[] {
   const productList: Product[] = [];
   const fedList: FedType[] = ["C", "A", "B"];
@@ -30,19 +29,20 @@ export function createFakeData(): Product[] {
   return productList;
 }
 
-type FedBodyProps = {
-  fed: FedType;
-};
+// type FedBodyProps = {
+//   fed: FedType;
+// };
 
-export default function FederationBody({ fed }: FedBodyProps) {
+export default function FederationBody() {
   const data = createFakeData();
+  const { currentFederation } = useFederationStore();
   return (
-    <div className="w-full mt-5">
+    <div className="mt-5">
       <ScrollArea className="h-[500px] rounded-md">
         {data
           .filter((item) => {
-            if (fed !== "NONE") {
-              if (item.federationSupport.includes(fed)) {
+            if (currentFederation !== "NONE") {
+              if (item.federationSupport.includes(currentFederation)) {
                 return item;
               }
             } else {
