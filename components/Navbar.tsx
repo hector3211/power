@@ -5,7 +5,7 @@ import { MobileNavButton } from "./Mobilenav";
 export default function Nav() {
   return (
     <div className="flex w-full justify-between items-center px-5 lg:px-8 py-3 bg-zinc-300">
-      <h1 className="text-3xl font-extrabold">Power</h1>
+      <h1 className="text-xl md:text-3xl font-extrabold">Pinellas Barbell</h1>
       <div className="hidden md:flex md:justify-between">
         <Link href={"/"}>
           <Button variant={"link"} className="lg:text-lg">

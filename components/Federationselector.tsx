@@ -14,9 +14,9 @@ export default function FederationSelect() {
   const { currentFederation, setFederation } = useFederationStore();
 
   return (
-    <div>
+    <div className="w-full px-3 py-3">
       <Select onValueChange={(e: FedType) => setFederation(e)}>
-        <SelectTrigger className="w-96 text-white text-lg">
+        <SelectTrigger className=" text-white text-lg">
           <SelectValue
             placeholder={
               currentFederation === "NONE" ? "ALL" : `${currentFederation}`
